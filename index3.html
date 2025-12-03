@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUDITX Pro | Auditorías Web, IA y Automatización</title>
+    <!-- Carga de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuración para usar la fuente Inter y colores personalizados -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-indigo': '#3730a3', // Azul Índigo más oscuro y premium
+                        'secondary-slate': '#475569',
+                        'pack-starter': '#3b82f6',
+                        'pack-full': '#10b981',
+                        'pack-ai': '#f97316',
+                        'light-bg': '#f3f4f6', // Gris claro para fondo
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Estilos generales y mejora visual */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1f2937;
+        }
+        /* Garantiza que los enlaces de anclaje funcionen con el header fijo */
+        .scroll-mt-20 {
+            scroll-margin-top: 4rem; /* Reducido de 5rem a 4rem */
+        }
+        /* Estilo para el botón flotante de WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            width: 50px; /* Reducido */
+            height: 50px; /* Reducido */
+            bottom: 20px; /* Reducido para móvil */
+            right: 20px; /* Reducido para móvil */
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 24px; /* Reducido */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra más suave */
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+        /* Ocultar menú móvil por defecto */
+        #mobile-menu {
+            display: none;
+        }
+    </style>
+    <!-- Enlace al ícono de WhatsApp (Font Awesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="antialiased scroll-smooth">
+
+    <!-- Botón Flotante de WhatsApp -->
+    <a href="https://wa.me/XXXXXXXXXX?text=Hola%2C%20me%20interesa%20una%20auditor%C3%ADa%20web." target="_blank" class="whatsapp-float" aria-label="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Navbar/Header Refinado y Compacto -->
+    <header class="sticky top-0 z-20 bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center h-16">
+            <h1 class="text-xl font-black text-primary-indigo tracking-wider">AUDITX PRO</h1>
+            
+            <!-- Navegación Desktop -->
+            <nav class="hidden md:flex space-x-6 text-gray-600 font-medium text-sm">
+                <a href="#hero" class="hover:text-primary-indigo transition duration-150">Inicio</a>
+                <a href="#problema" class="hover:text-primary-indigo transition duration-150">Problema</a>
+                <a href="#planes" class="hover:text-primary-indigo transition duration-150">Planes</a>
+                <a href="#sobre-mi" class="hover:text-primary-indigo transition duration-150">Sobre Mí</a>
+                <a href="#contacto" class="hover:text-primary-indigo transition duration-150 text-pack-full">Contacto</a>
+            </nav>
+
+            <!-- Menú Hamburguesa (Mobile) -->
+            <button id="menu-toggle" class="md:hidden p-2 rounded-lg text-gray-600 hover:text-primary-indigo focus:outline-none focus:ring-2 focus:ring-primary-indigo" aria-label="Menú de Navegación">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+    </header>
+    
+    <!-- Menú Desplegable (Mobile) -->
+    <div id="mobile-menu" class="absolute w-full bg-white shadow-xl md:hidden z-10 border-t border-gray-100">
+        <nav class="flex flex-col space-y-2 p-4 text-base font-medium text-gray-700">
+            <a href="#hero" class="p-2 rounded hover:bg-light-bg transition duration-150 menu-link">Inicio</a>
+            <a href="#problema" class="p-2 rounded hover:bg-light-bg transition duration-150 menu-link">Problema</a>
+            <a href="#planes" class="p-2 rounded hover:bg-light-bg transition duration-150 menu-link">Planes</a>
+            <a href="#sobre-mi" class="p-2 rounded hover:bg-light-bg transition duration-150 menu-link">Sobre Mí</a>
+            <a href="#contacto" class="p-2 rounded hover:bg-light-bg transition duration-150 menu-link text-pack-full font-semibold">Contacto</a>
+        </nav>
+    </div>
+
+    <!-- 🌐 Hero / Encabezado (Altura Reducida, Texto Compacto) -->
+    <section id="hero" class="scroll-mt-20 bg-primary-indigo text-white py-12 md:py-20">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-3 leading-snug">
+                Impulsa tu Crecimiento con <br> <span class="text-pack-full font-black">Auditoría & Automatización.</span>
+            </h2>
+            <p class="text-base sm:text-lg font-light mb-8 max-w-2xl mx-auto opacity-90">
+                Detallamos el plan exacto para que tu pequeña empresa o e-commerce venda más, usando el poder de la IA.
+            </p>
+            <p class="text-sm font-semibold mb-10 bg-white text-primary-indigo rounded-full inline-block px-6 py-1.5 shadow-lg transform hover:scale-[1.03] transition duration-300">
+                📈 Resultados medibles | Informes accionables | Inversión inteligente
+            </p>
+
+            <!-- Botones Principales (Tamaño Reducido) -->
+            <div class="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4">
+                <a href="#contacto" class="inline-block bg-pack-full hover:bg-green-600 text-white font-bold py-2.5 px-6 rounded-xl transition duration-300 shadow-lg transform hover:scale-105 text-sm">
+                    Quiero mi Plan de Acción
+                </a>
+                <a href="#planes" class="inline-block bg-white bg-opacity-20 hover:bg-opacity-30 text-white font-semibold py-2.5 px-6 rounded-xl transition duration-300 border border-white text-sm">
+                    Ver Precios y Servicios
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🟤 Sección 1 — ¿Por qué necesitas una auditoría web? (Espaciado Reducido) -->
+    <section id="problema" class="scroll-mt-20 py-12 md:py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <span class="text-xs font-semibold uppercase text-secondary-slate">El punto de dolor</span>
+                <h3 class="mt-1 text-2xl font-bold text-gray-900 md:text-4xl">Tu web tiene fugas, y te están costando dinero.</h3>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                
+                <div class="bg-gray-50 p-6 rounded-xl shadow-md">
+                    <p class="text-lg leading-relaxed mb-5 font-medium text-gray-700 max-w-xl mx-auto md:mx-0">
+                        Estos son los 7 sabotajes internos que impiden tu crecimiento y que detectamos:
+                    </p>
+                    <!-- Lista de Puntos de Dolor (Compacta) -->
+                    <ul class="space-y-3 text-left text-base text-gray-800">
+                        <li class="flex items-start">
+                            <span class="text-lg text-red-500 mr-2 mt-1">❌</span> **Velocidad de carga** (53% de los usuarios se van si tarda 3 segundos)
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-lg text-red-500 mr-2 mt-1">❌</span> **SEO invisible** (Google no entiende de qué va tu negocio)
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-lg text-red-500 mr-2 mt-1">❌</span> **Fallas en formularios** (Leads que nunca llegan a tu bandeja)
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-lg text-red-500 mr-2 mt-1">❌</span> **Diseño confuso** (Los clientes no encuentran el botón de compra)
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-lg text-red-500 mr-2 mt-1">❌</span> **Riesgos de seguridad** (Vulnerabilidades que puedes evitar)
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-lg text-red-500 mr-2 mt-1">❌</span> **Tareas repetitivas** (Pierdes tiempo en cosas que la IA puede hacer)
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-lg text-red-500 mr-2 mt-1">❌</span> **Conversión baja** (El tráfico llega, pero el dinero no)
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="text-center md:text-left">
+                    <p class="text-2xl font-bold text-primary-indigo leading-snug">
+                        El informe de AUDITX Pro es el mapa exacto para sellar esas fugas y empezar a facturar más.
+                    </p>
+                    <p class="mt-3 text-secondary-slate text-base">
+                        Dejemos de adivinar. Con datos reales y un plan de acción priorizado, verás un impacto directo en tu cuenta de resultados.
+                    </p>
+                    <a href="#contacto" class="mt-5 inline-block text-primary-indigo font-semibold hover:text-indigo-700 transition duration-300 text-sm">
+                        Quiero dejar de perder dinero &rarr;
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Sección de Testimonios (Swipeable en Móvil) -->
+    <section id="testimonios" class="scroll-mt-20 py-12 md:py-16 bg-light-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <span class="text-xs font-semibold uppercase text-pack-full">La Prueba Social</span>
+                <h3 class="mt-1 text-2xl font-bold text-gray-900 md:text-4xl">Lo que dicen nuestros clientes</h3>
+            </div>
+
+            <!-- Contenedor Swipeable para Móvil -->
+            <div class="md:grid md:grid-cols-3 gap-6 overflow-x-auto whitespace-nowrap md:whitespace-normal pb-4 md:pb-0">
+                
+                <!-- Testimonio 1 -->
+                <div class="inline-block w-[85vw] sm:w-[50vw] md:w-full bg-white p-6 rounded-xl shadow-lg border border-gray-200 mr-4 md:mr-0 flex-shrink-0">
+                    <p class="text-gray-700 italic text-base mb-4">"Nuestra web de e-commerce pasó de cargar en 4 segundos a 1.5. El impacto en las ventas fue inmediato, un 18% más de conversiones solo en el primer mes. El informe fue muy claro, ¡gracias!"</p>
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0 mr-3 text-xl text-yellow-500">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-sm text-gray-900">Javier R.</p>
+                            <p class="text-xs text-gray-500">Fundador, Tienda de Artesanía</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonio 2 -->
+                <div class="inline-block w-[85vw] sm:w-[50vw] md:w-full bg-white p-6 rounded-xl shadow-lg border border-gray-200 mr-4 md:mr-0 flex-shrink-0">
+                    <p class="text-gray-700 italic text-base mb-4">"La auditoría SEO y la automatización de la monitorización nos ahorraron horas de trabajo al mes. Ahora tenemos alertas de errores en tiempo real y el tráfico orgánico no para de crecer."</p>
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0 mr-3 text-xl text-yellow-500">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-sm text-gray-900">María P.</p>
+                            <p class="text-xs text-gray-500">Marketing Digital, Agencia de Viajes</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonio 3 -->
+                <div class="inline-block w-[85vw] sm:w-[50vw] md:w-full bg-white p-6 rounded-xl shadow-lg border border-gray-200 flex-shrink-0">
+                    <p class="text-gray-700 italic text-base mb-4">"Necesitaba un diagnóstico sencillo, no un papiro técnico. Me dieron un informe visual con el "qué" y el "cómo" arreglarlo. Inversión 100% recuperada con los primeros cambios."</p>
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0 mr-3 text-xl text-yellow-500">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-sm text-gray-900">Carlos M.</p>
+                            <p class="text-xs text-gray-500">Autónomo y Consultor</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <p class="text-center text-sm text-gray-500 mt-4 md:hidden">
+                &larr; Desliza para ver más &rarr;
+            </p>
+        </div>
+    </section>
+
+    <!-- Sección "Sobre mí" (Compacta) -->
+    <section id="sobre-mi" class="scroll-mt-20 py-12 md:py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <span class="text-xs font-semibold uppercase text-primary-indigo">El Profesional Detrás de AUDITX PRO</span>
+                <h3 class="mt-1 text-2xl font-bold text-gray-900 md:text-4xl">Mi Compromiso: Tu Éxito Digital</h3>
+            </div>
+            
+            <div class="max-w-4xl mx-auto flex flex-col md:flex-row gap-6 items-start">
+                <!-- Imagen Placeholder (Altura Reducida en Móvil) -->
+                <div class="w-full md:w-1/3 flex-shrink-0 mx-auto md:mx-0">
+                    <img src="https://placehold.co/300x300/3730a3/ffffff?text=Tu+Foto+Profesional" alt="Foto del Auditor Web" class="rounded-xl shadow-lg w-full max-h-80 md:max-h-96 object-cover mx-auto">
+                </div>
+                
+                <div class="w-full md:w-2/3 text-gray-700 text-base space-y-3">
+                    <p class="font-semibold text-gray-900 text-xl">Hola, soy [Tu Nombre], y mi misión es eliminar los cuellos de botella de tu web.</p>
+                    <p>Llevo más de [X] años en el sector, ayudando a negocios como el tuyo a pasar de tener una web "bonita" a una máquina de generar ventas. Mi enfoque no es solo técnico, sino estratégico: cada error corregido es una oportunidad de conversión ganada.</p>
+                    <p>Combino metodologías de auditoría tradicionales con las últimas herramientas de Inteligencia Artificial para ofrecerte informes que no solo identifican el problema, sino que te dan la solución precisa y priorizada. **No soy un desarrollador, soy un optimizador de rendimiento.**</p>
+                    <p class="font-bold text-primary-indigo text-lg">Trabajemos juntos para que tu web te dé los resultados que mereces.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Sección de Planes y Precios (Cards Compactas) -->
+    <section id="planes" class="scroll-mt-20 py-12 md:py-16 bg-light-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <span class="text-xs font-semibold uppercase text-primary-indigo">Nuestros Servicios</span>
+                <h3 class="mt-1 text-2xl font-bold text-gray-900 md:text-4xl">Elige el Plan Perfecto para tu Negocio</h3>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-6">
+
+                <!-- 🟦 PACK 1 — Starter Web Check -->
+                <div class="bg-white p-6 rounded-2xl shadow-lg border-t-4 border-pack-starter transform hover:scale-[1.01] transition duration-300">
+                    <div class="text-center">
+                        <h4 class="text-xl font-extrabold text-pack-starter">Starter Web Check</h4>
+                        <p class="text-gray-500 text-sm mt-1">Ideal para autónomos y emprendedores.</p>
+                        <p class="text-3xl font-bold my-3 text-gray-900">
+                            49 € – 79 €
+                        </p>
+                    </div>
+
+                    <p class="mt-5 text-base font-semibold text-gray-700 flex items-center mb-2">
+                        <span class="text-lg text-pack-starter mr-2">🔍</span> Incluye:
+                    </p>
+                    <ul class="text-gray-600 space-y-2 text-xs ml-4 list-disc">
+                        <li>Revisión de velocidad (PageSpeed & Core Web Vitals)</li>
+                        <li>Diagnóstico SEO básico</li>
+                        <li>Revisión del diseño y claridad del contenido</li>
+                        <li>Detección de errores críticos</li>
+                        <li>Informe visual 4–6 páginas</li>
+                        <li>Plan de acción simple y aplicable</li>
+                    </ul>
+
+                    <div class="mt-8 text-center">
+                        <a href="#contacto" class="block w-full bg-pack-starter hover:bg-blue-700 text-white font-bold py-2.5 px-6 rounded-xl transition duration-300 shadow-md text-sm">
+                            Contratar Starter
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 🟩 PACK 2 — Full Performance Audit (Destacado) -->
+                <div class="bg-white p-6 rounded-2xl shadow-xl border-t-4 border-pack-full lg:scale-[1.04] lg:shadow-2xl transform hover:scale-[1.05] transition duration-300">
+                    <div class="text-center">
+                        <h4 class="text-xl font-extrabold text-pack-full">Full Performance Audit</h4>
+                        <p class="text-gray-500 text-sm mt-1 font-semibold">Para tiendas online y negocios que quieren crecer.</p>
+                        <p class="text-3xl font-bold my-3 text-gray-900">
+                            149 € – 249 €
+                        </p>
+                    </div>
+
+                    <p class="mt-5 text-base font-semibold text-gray-700 flex items-center mb-2">
+                        <span class="text-lg text-pack-full mr-2">🔍</span> Incluye:
+                    </p>
+                    <ul class="text-gray-600 space-y-2 text-xs ml-4 list-disc">
+                        <li>Auditoría técnica avanzada</li>
+                        <li>Análisis SEO completo</li>
+                        <li>Revisión profesional UX/UI</li>
+                        <li>Optimización de conversiones (CRO)</li>
+                        <li>Revisión de imágenes, scripts y estructura</li>
+                        <li>Investigación básica de competencia</li>
+                        <li>Informe profesional 15–20 páginas</li>
+                        <li>Videollamada 30 min para explicar el reporte</li>
+                        <li>Plan de acción priorizado por impacto</li>
+                    </ul>
+
+                    <div class="mt-8 text-center">
+                        <a href="#contacto" class="block w-full bg-pack-full hover:bg-green-600 text-white font-bold py-2.5 px-6 rounded-xl transition duration-300 shadow-xl text-sm">
+                            Contratar Full Audit
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 🟧 PACK 3 — AI Booster & Automation -->
+                <div class="bg-white p-6 rounded-2xl shadow-lg border-t-4 border-pack-ai transform hover:scale-[1.01] transition duration-300">
+                    <div class="text-center">
+                        <h4 class="text-xl font-extrabold text-pack-ai">AI Booster & Automation</h4>
+                        <p class="text-gray-500 text-sm mt-1">Para negocios digitales que quieren automatizar y crecer.</p>
+                        <div class="text-base font-bold my-3 text-gray-900">
+                            <p>Setup inicial: 120 € – 180 €</p>
+                            <p class="text-sm font-semibold mt-1">Mantenimiento: 39 € – 79 €/mes</p>
+                        </div>
+                    </div>
+
+                    <p class="mt-5 text-base font-semibold text-gray-700 flex items-center mb-2">
+                        <span class="text-lg text-pack-ai mr-2">🤖</span> Incluye:
+                    </p>
+                    <ul class="text-gray-600 space-y-2 text-xs ml-4 list-disc">
+                        <li>Auditoría completa (todo el pack 2)</li>
+                        <li>Automatizaciones con IA:</li>
+                        <li class="ml-4">- Monitorización de velocidad</li>
+                        <li class="ml-4">- Alertas automáticas de errores (404, caídas, fallos)</li>
+                        <li class="ml-4">- Informe mensual automático</li>
+                        <li class="ml-4">- Seguimiento SEO semanal</li>
+                        <li class="ml-4">- Recomendaciones automáticas de mejoras</li>
+                        <li>Mini mejoras mensuales</li>
+                        <li>Reunión mensual (15 min)</li>
+                    </ul>
+
+                    <div class="mt-8 text-center">
+                        <a href="#contacto" class="block w-full bg-pack-ai hover:bg-orange-700 text-white font-bold py-2.5 px-6 rounded-xl transition duration-300 shadow-md text-sm">
+                            Empezar con Automatización
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: ¿Por qué trabajar conmigo? (Compacta) -->
+    <section class="py-12 md:py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <span class="text-xs font-semibold uppercase text-secondary-slate">Confianza y Experiencia</span>
+                <h3 class="mt-1 text-2xl font-bold text-gray-900 md:text-4xl">¿Por qué trabajar conmigo?</h3>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
+                
+                <!-- Ventajas competitivas en formato de tarjeta/elemento (Más compactos) -->
+                <div class="flex items-center p-3 bg-primary-indigo/10 rounded-lg shadow-sm">
+                    <span class="text-lg text-primary-indigo mr-3">✔</span>
+                    <p class="text-gray-700 font-medium text-sm">Auditorías claras, sin tecnicismos.</p>
+                </div>
+                <div class="flex items-center p-3 bg-primary-indigo/10 rounded-lg shadow-sm">
+                    <span class="text-lg text-primary-indigo mr-3">✔</span>
+                    <p class="text-gray-700 font-medium text-sm">Uso de IA para resultados más rápidos.</p>
+                </div>
+                <div class="flex items-center p-3 bg-primary-indigo/10 rounded-lg shadow-sm">
+                    <span class="text-lg text-primary-indigo mr-3">✔</span>
+                    <p class="text-gray-700 font-medium text-sm">Precios accesibles para emprendedores.</p>
+                </div>
+                <div class="flex items-center p-3 bg-primary-indigo/10 rounded-lg shadow-sm">
+                    <span class="text-lg text-primary-indigo mr-3">✔</span>
+                    <p class="text-gray-700 font-medium text-sm">Experiencia en análisis, UX y optimización.</p>
+                </div>
+                <div class="flex items-center p-3 bg-primary-indigo/10 rounded-lg shadow-sm">
+                    <span class="text-lg text-primary-indigo mr-3">✔</span>
+                    <p class="text-gray-700 font-medium text-sm">Atención personalizada.</p>
+                </div>
+                <div class="flex items-center p-3 bg-primary-indigo/10 rounded-lg shadow-sm">
+                    <span class="text-lg text-primary-indigo mr-3">✔</span>
+                    <p class="text-gray-700 font-medium text-sm">Entrego informes bonitos y fáciles de entender.</p>
+                </div>
+                <div class="flex items-center p-3 bg-primary-indigo/10 rounded-lg shadow-sm md:col-span-2 lg:col-span-1 lg:col-start-2">
+                    <span class="text-lg text-primary-indigo mr-3">✔</span>
+                    <p class="text-gray-700 font-medium text-sm">Soporte humano, real y directo.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Cómo funciona (Espaciado Reducido) -->
+    <section id="como-funciona" class="scroll-mt-20 py-12 md:py-16 bg-light-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <span class="text-xs font-semibold uppercase text-primary-indigo">Proceso Transparente</span>
+                <h3 class="mt-1 text-2xl font-bold text-gray-900 md:text-4xl">Cómo funciona nuestra colaboración</h3>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <ol class="relative border-l border-gray-300 ml-4 md:ml-0">                  
+                    <!-- Paso 1 -->
+                    <li class="mb-8 ml-6">
+                        <span class="flex absolute -left-3 justify-center items-center w-5 h-5 bg-primary-indigo rounded-full ring-4 ring-gray-50 ring-opacity-100 text-white text-xs font-bold">1</span>
+                        <h4 class="mb-1 text-lg font-semibold text-gray-900">Me contactas y eliges tu plan</h4>
+                        <p class="text-sm font-normal text-gray-600">Por el canal que prefieras o usando el formulario de abajo.</p>
+                    </li>
+                    <!-- Paso 2 -->
+                    <li class="mb-8 ml-6">
+                        <span class="flex absolute -left-3 justify-center items-center w-5 h-5 bg-primary-indigo rounded-full ring-4 ring-gray-50 ring-opacity-100 text-white text-xs font-bold">2</span>
+                        <h4 class="mb-1 text-lg font-semibold text-gray-900">Auditoría con IA</h4>
+                        <p class="text-sm font-normal text-gray-600">Utilizo herramientas profesionales y la inteligencia artificial para un diagnóstico preciso y 360º de tu plataforma.</p>
+                    </li>
+                    <!-- Paso 3 -->
+                    <li class="mb-8 ml-6">
+                        <span class="flex absolute -left-3 justify-center items-center w-5 h-5 bg-primary-indigo rounded-full ring-4 ring-gray-50 ring-opacity-100 text-white text-xs font-bold">3</span>
+                        <h4 class="mb-1 text-lg font-semibold text-gray-900">Entrega del Plan de Acción</h4>
+                        <p class="text-sm font-normal text-gray-600">Recibes un informe visual, claro y con las prioridades de implementación marcadas (Ver demo abajo).</p>
+                    </li>
+                    <!-- Paso 4 -->
+                    <li class="mb-8 ml-6">
+                        <span class="flex absolute -left-3 justify-center items-center w-5 h-5 bg-primary-indigo rounded-full ring-4 ring-gray-50 ring-opacity-100 text-white text-xs font-bold">4</span>
+                        <h4 class="mb-1 text-lg font-semibold text-gray-900">Reunión de Estrategia</h4>
+                        <p class="text-sm font-normal text-gray-600">Revisamos juntos los hallazgos y resolvemos todas tus dudas (Incluido en Pack Full y AI Booster).</p>
+                    </li>
+                    <!-- Paso 5 -->
+                    <li class="ml-6">
+                        <span class="flex absolute -left-3 justify-center items-center w-5 h-5 bg-primary-indigo rounded-full ring-4 ring-gray-50 ring-opacity-100 text-white text-xs font-bold">5</span>
+                        <h4 class="mb-1 text-lg font-semibold text-gray-900">¡A Facturar más!</h4>
+                        <p class="text-sm font-normal text-gray-600">Tu web mejora y tus resultados también, con la tranquilidad de tener un proceso claro y profesional.</p>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulario Funcional (Estructura Compacta) -->
+    <section id="contacto" class="scroll-mt-20 py-12 md:py-16 bg-primary-indigo text-white">
+        <div class="max-w-xl mx-auto px-4">
+            <div class="text-center mb-8">
+                <p class="text-2xl sm:text-3xl font-extrabold mb-2">
+                    Empecemos a trabajar en tu crecimiento.
+                </p>
+                <p class="text-base font-light opacity-90">
+                    Rellena el formulario o contáctame directamente por WhatsApp.
+                </p>
+            </div>
+
+            <!-- Formulario de Contacto -->
+            <form action="mailto:tu.email@ejemplo.com" method="POST" class="space-y-4 bg-white p-6 rounded-xl shadow-2xl text-gray-800">
+                
+                <!-- Nombre -->
+                <div>
+                    <label for="name" class="block text-xs font-medium text-gray-700">Nombre Completo</label>
+                    <input type="text" id="name" name="name" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-primary-indigo focus:border-primary-indigo transition duration-150 text-sm" placeholder="Tu nombre">
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <label for="email" class="block text-xs font-medium text-gray-700">Email</label>
+                    <input type="email" id="email" name="email" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-primary-indigo focus:border-primary-indigo transition duration-150 text-sm" placeholder="tu.email@ejemplo.com">
+                </div>
+                
+                <!-- URL de la Web -->
+                <div>
+                    <label for="website" class="block text-xs font-medium text-gray-700">URL de tu Web (Obligatorio)</label>
+                    <input type="url" id="website" name="website" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-primary-indigo focus:border-primary-indigo transition duration-150 text-sm" placeholder="https://tudominio.com">
+                </div>
+
+                <!-- Plan de Interés -->
+                <div>
+                    <label for="plan" class="block text-xs font-medium text-gray-700">Plan de Interés</label>
+                    <select id="plan" name="plan" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-primary-indigo focus:border-primary-indigo transition duration-150 text-sm">
+                        <option value="starter">Pack Starter Web Check</option>
+                        <option value="full" selected>Pack Full Performance Audit</option>
+                        <option value="ai">Pack AI Booster & Automation</option>
+                        <option value="consulta">Solo quiero hacer una consulta</option>
+                    </select>
+                </div>
+
+                <!-- Mensaje -->
+                <div>
+                    <label for="message" class="block text-xs font-medium text-gray-700">Tu Mensaje / Pregunta</label>
+                    <textarea id="message" name="message" rows="3" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-primary-indigo focus:border-primary-indigo transition duration-150 text-sm" placeholder="Cuéntame un poco sobre tu negocio y tus objetivos..."></textarea>
+                </div>
+                
+                <!-- Botón de Envío -->
+                <div class="pt-2">
+                    <button type="submit" class="w-full bg-primary-indigo hover:bg-indigo-700 text-white font-bold py-2.5 rounded-xl transition duration-300 shadow-md transform hover:scale-[1.01] text-sm">
+                        Enviar Solicitud de Auditoría
+                    </button>
+                </div>
+            </form>
+            
+            <p class="text-xs mt-6 opacity-75 text-center">
+                *Tus datos son privados. No enviamos spam.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer Simple y Compacto -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs opacity-75">
+            <p>&copy; 2025 AUDITX PRO. Todos los derechos reservados. | Servicios de Auditoría, IA y Automatización.</p>
+        </div>
+    </footer>
+
+    <!-- Script para el menú hamburguesa (Versión Móvil) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuLinks = document.querySelectorAll('.menu-link');
+
+            menuToggle.addEventListener('click', () => {
+                const isExpanded = mobileMenu.style.display === 'block';
+                mobileMenu.style.display = isExpanded ? 'none' : 'block';
+                // Cambiar el icono
+                menuToggle.querySelector('i').classList.toggle('fa-bars');
+                menuToggle.querySelector('i').classList.toggle('fa-xmark');
+            });
+
+            // Cerrar menú al hacer clic en un enlace (para navegar)
+            menuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.style.display = 'none';
+                    // Restablecer icono
+                    menuToggle.querySelector('i').classList.add('fa-bars');
+                    menuToggle.querySelector('i').classList.remove('fa-xmark');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
